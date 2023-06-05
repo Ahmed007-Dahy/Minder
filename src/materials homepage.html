@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth m-0 p-0">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind.CSS Link -->
+    <link rel="stylesheet" href="../dist/output.css">
+    <!--Fontawesome icons-->
+    <link rel="stylesheet" href="css/all.css">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Monda:wght@400;700&family=Work+Sans:ital,wght@0,300;0,600;1,100;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <title>Material home</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+</head>
+
+<body onload="whenLoad()">
+    <!-- The navbar -->
+    <!-- navBar-part -->
+    <header class="bg-bgColorFooter text-white h-20">
+        <div class="container max-w-full flex items-center justify-between px-16 md:px-10 sm:px-8">
+            <div class="py-3"><img src="images/materials/logo.png" alt=""></div>
+
+            <button id="toggle" class=" lg:hidden xl:hidden 2xl:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <nav id="nav"
+                class="fixed z-20 top-12 bottom-0 -right-full bg-bgColorFooter w-52  lg:w-auto lg:static xl:w-auto xl:static 2xl:w-auto 2xl:static transition-all sm:top-16">
+                <ul class=" lg:flex xl:flex 2xl:flex">
+                    <li onclick="homeButton()">
+                        <a id="home"
+                            class="font-Monda block mt-7 mr-11 px-2 pb-4 text-lg hover:border-b-4 rounded-sm border-mainFont md:w-full sm:w-full"
+                            href="#">Home</a>
+                    </li>
+                    <li onclick="aboutUsButton()">
+                        <a id="aboutUs"
+                            class="font-Monda block mt-7 mr-11 px-2 pb-4 text-lg hover:border-b-4 hover:rounded-sm border-mainFont transition duration-300 md:w-full sm:w-full"
+                            href="about-us.html">About us</a>
+                    </li>
+                    <li onclick="materialsButton()">
+                        <a id="Materials"
+                            class="font-Monda block mt-7 mr-11 px-2 pb-4 text-lg hover:border-b-4 hover:rounded-sm border-mainFont transition duration-300 md:w-full sm:w-full"
+                            href="material.html">Materials</a>
+                    </li>
+                    <li>
+                        <a onclick="openProfile()"
+                            class="font-Monda block p-3 lg:mt-5 lg:p-0 xl:mt-5 xl:p-0 2xl:mt-5 2xl:p-0" href="#"><img
+                                src="images/materials/user.png" alt=""></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- *********************************************************** -->
+    <!-- Get the App button -->
+    <div>
+        <button class="transition duration-300 hover:opacity-90 fixed -rotate-90 -left-11 bottom-2/4 z-20 uppercase text-white bg-bgColorFooter rounded-lg text-sm text-center
+                        font-semibold font-Monda px-5 py-3">get the app
+        </button>
+    </div>
+    <!-- User-Profile-part -->
+    </header>
+    <section id="userProfile"
+        class="hidden overflow-x-scroll z-20 top-0 bottom-0 right-0 bg-sign-up-bgcolor pb-36 w-[30%] sm:w-3/4">
+        <button onclick="closeProfile()">
+            <img class="absolute top-5 ml-4" src="images/Space-page/Arrow - Left.svg" alt="arrow-left">
+        </button>
+        <div class="grid grid-cols-1 justify-center">
+            <!-- Profile-icon-part -->
+            <div class="block mx-auto">
+                <h2 class="text-center font-Monda font-bold text-3xl not-italic sm:text-2xl">Profile</h2>
+                <button>
+                    <img class="w-3/4 my-1 mx-auto sm:w-2/3" src="images/home-page/user-profile.svg" alt="user">
+                </button>
+                <p class="text-center font-Monda font-normal text-xl sm:text-lg">Anon</p>
+            </div>
+            <!-- My account-button -->
+            <button onclick="showName()"
+                class="flex relative items-center justify-center text-white bg-bgColorButton2 font-Monda w-3/5 mx-auto my-2 py-2 rounded-xl sm:w-3/4">
+                <i class="fa-solid fa-user mr-2"></i>
+                <span class="mr-2 font-Monda font-bold text-lg not-italic">My Account</span>
+                <i id="iconDown" class="fa-solid fa-angle-down absolute right-0 pr-5 pt-0.5 text-xl content-end"></i>
+                <button onclick="hideName()" id="iconUP"
+                    class="absolute opacity-0 top-[27%] right-[24.3%] pt-0.5 text-xl content-end text-white sm:top-[27.7%] sm:right-[20%]"><i
+                        class="fa-solid fa-angle-up"></i></button>
+            </button>
+            <div id="formModal" class="hidden mt-2">
+                <!-- Name-Part -->
+                <label class="block mb-5 relative">
+                    <i
+                        class="absolute fa-solid fa-address-card text-sign-up-fontColor right-[75%] top-[33%] text-base pl-3 sm:right-[78%]"></i>
+                    <input
+                        class="focus-within:bg-bgColorHeading focus-within:border focus-within:border-bgColorFooter outline-none w-3/5 mx-auto block bg-lableBackground py-2 pl-7 rounded-xl placeholder:font-Monda placeholder:font-bold placeholder:text-sm placeholder:text-sign-up-fontColor sm:w-3/4"
+                        type="text" name="name" placeholder="Name">
+                </label>
+                <!-- UserName-Part -->
+                <label class="block relative">
+                    <i
+                        class="fa-solid fa-address-card absolute text-sign-up-fontColor right-[75%] top-[33%] text-base pl-3 sm:right-[78%]"></i>
+                    <input
+                        class="focus-within:bg-bgColorHeading focus-within:border focus-within:border-bgColorFooter outline-none w-3/5 mx-auto block bg-lableBackground py-2 pl-7 rounded-xl placeholder:font-Monda placeholder:font-bold placeholder:text-sm placeholder:text-sign-up-fontColor sm:w-3/4"
+                        type="text" name="Username" placeholder="Username">
+                </label>
+                <!-- change-Password-Part -->
+                <button onclick="showPassword()"
+                    class="flex relative items-center justify-center text-white bg-bgColorButton2 font-Monda w-3/5 mx-auto my-4 py-2 rounded-xl sm:w-3/4">
+                    <span class="mr-2 font-Monda font-bold text-lg not-italic">Cahnge password</span>
+                    <i id="iconLow"
+                        class="fa-solid fa-angle-down absolute right-0 pr-5 pt-0.5 text-xl content-end sm:-right-2"></i>
+                    <button onclick="hidePassword()" id="iconHigh"
+                        class="absolute opacity-0 block z-20 top-[52.7%] right-[24.4%] pt-0.5 text-xl text-white content-end sm:top-[55.3%] sm:right-[17%]"><i
+                            class="fa-solid fa-angle-up"></i></button>
+                </button>
+                <!-- Password-Modal-Part -->
+                <div id="passwordModal" class="hidden mt-2">
+                    <!-- password -->
+                    <label class="block mb-5 relative">
+                        <i
+                            class="fa-solid fa-lock absolute text-sign-up-fontColor top-1/3 left-[20%] text-base pl-3 sm:left-[12.5%]"></i>
+                        <input
+                            class="focus-within:bg-bgColorHeading focus-within:border focus-within:border-bgColorFooter outline-none w-3/5 mx-auto block bg-lableBackground py-2 pl-7 rounded-xl placeholder:font-Monda placeholder:font-bold placeholder:text-sm placeholder:text-sign-up-fontColor sm:w-3/4"
+                            type="password" name="password" placeholder="Your password">
+                    </label>
+                    <!-- new-password-Part -->
+                    <label class="block relative">
+                        <i
+                            class="fa-solid fa-lock absolute text-sign-up-fontColor top-1/3 left-[20%] text-base pl-3 sm:left-[13%]"></i>
+                        <input
+                            class="focus-within:bg-bgColorHeading focus-within:border focus-within:border-bgColorFooter outline-none w-3/5 mx-auto block bg-lableBackground py-2 pl-7 rounded-xl placeholder:font-Monda placeholder:font-bold placeholder:text-sm placeholder:text-sign-up-fontColor sm:w-3/4"
+                            type="password" name="confirmPassword" placeholder=" New Password">
+                    </label>
+                    <button onclick="showMsg()"
+                        class="bg-FemaleColor w-1/4 py-2 mx-auto mt-4 rounded-lg text-white font-Monda not-italic font-bold block sm:w-1/3">Reset</button>
+                </div>
+                <!-- Password-Msg-Part -->
+                <div id="passwordMsg"
+                    class="hidden bg-mainFont text-white text-center font-Monda pt-8 w-2/3 h-[15%] mx-auto absolute top-[58%] left-[17%] sm:h-auto sm:pt-3 sm:top-[60%]">
+                    <p class="mx-10">Your password has been
+                        changed succesfully!</p>
+                </div>
+            </div>
+            <!-- Payment-Button -->
+            <button
+                class="flex relative items-center justify-center text-white bg-bgColorButton2 font-Monda w-3/5 mx-auto my-4 py-2 rounded-xl sm:w-3/4">
+                <i class="fa-solid fa-wallet mr-2"></i> <span
+                    class="mr-2 font-Monda font-bold text-lg not-italic">Payment</span>
+                <i class="fa-solid fa-angle-down absolute right-0 pr-5 pt-0.5 text-xl content-end"></i>
+            </button>
+            <!-- Mood Statics box -->
+            <div
+                class="bg-bgColorButton2 text-white text-center mx-auto w-3/4 h-auto mt-3 pb-4 rounded-lg opacity-80 box-border sm:w-full sm:">
+                <h2 class="font-Monda not-italic font-bold text-lg">Mood Statics</h2>
+                <div class="relative flex flex-row items-center justify-between mt-10">
+                    <div class="flex flex-col max-w-full">
+                        <div
+                            class="w-32 absolute right-[74%] top-5 -rotate-90 bg-white rounded-full h-0.5 mt-10 dark:bg-white sm:right-[69%]">
+                            <div class="bg-num h-0.5 rounded-full dark:bg-num" style="width: 45%"></div>
+                        </div>
+                        <img class="w-14 mt-32 sm:w-10" src="images/home-page/mood1.png" alt="">
+                    </div>
+                    <div class="flex flex-col max-w-full">
+                        <div
+                            class="w-32 absolute right-[55%] top-5 -rotate-90 bg-white rounded-full h-0.5 mt-10 dark:bg-white  sm:right-[50%]">
+                            <div class="bg-num h-0.5 rounded-full dark:bg-num" style="width: 70%"></div>
+                        </div>
+                        <img class="w-14 mt-32 sm:w-10" src="images/home-page/mood2.png" alt="">
+                    </div>
+                    <div class="flex flex-col max-w-full">
+                        <div
+                            class="w-32 absolute right-[32%] top-5 -rotate-90 bg-white rounded-full h-0.5 mt-10 dark:bg-white sm:right-[28%]">
+                            <div class="bg-num h-0.5 rounded-full dark:bg-num" style="width: 35%"></div>
+                        </div>
+                        <img class="w-14 mt-32 sm:w-10" src="images/home-page/mood3.png" alt="">
+                    </div>
+                    <div class="flex flex-col max-w-full">
+                        <div
+                            class="w-32 absolute right-[11%] top-5 -rotate-90 bg-white rounded-full h-0.5 mt-10 dark:bg-white sm:right-[6%]">
+                            <div class="bg-num h-0.5 rounded-full dark:bg-num" style="width: 80%"></div>
+                        </div>
+                        <img class="w-14 mt-32 sm:w-10" src="images/home-page/mood4.png" alt="">
+                    </div>
+                    <div class="flex flex-col max-w-full">
+                        <div
+                            class="w-32 absolute -right-9 top-5 -rotate-90 bg-white rounded-full h-0.5 mt-10 dark:bg-white sm:-right-11">
+                            <div class="bg-num h-0.5 rounded-full dark:bg-num" style="width: 15%"></div>
+                        </div>
+                        <img class="w-14 mt-32 sm:w-10" src="images/home-page/mood5.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Calender-button -->
+            <button
+                class="flex relative items-center justify-center text-white bg-bgColorButton2 font-Monda w-3/5 mx-auto py-2 mt-5 rounded-xl sm:w-3/4">
+                <i class="fa-solid fa-calendar-days mr-2"></i>
+                <span class="mr-2 font-Monda font-bold text-lg not-italic">Calender</span>
+                <i class="fa-solid fa-angle-down absolute right-0 pr-5 pt-0.5 text-xl content-end"></i>
+            </button>
+            <!-- log-out-button -->
+            <button
+                class="flex relative items-center justify-center text-white bg-bgColorButton2 font-Monda w-3/5 mx-auto py-2 mt-5 rounded-xl sm:w-3/4">
+                <i class="fa-solid fa-door-open mr-2"></i>
+                <span class="mr-2 font-Monda font-bold text-lg not-italic">Log Out</span>
+                <i class="fa-solid fa-angle-right absolute right-0 pr-5 pt-0.5 text-xl content-end"></i>
+            </button>
+        </div>
+    </section>
+    <!--******************************************-->
+    <!-- Materials-Part -->
+    <!-- Materials-header -->
+    <div class="text-center mt-10">
+        <h2 class="font-Monda font-bold text-xl mb-3">Materials</h2>
+        <p class="text-fontColor2 text-lg font-Monda">Take a deep breath and start you relaxtion journey!</p>
+    </div>
+    <!-- Materials-content -->
+    <section class="grid grid-cols-8 gap-5 items-center justify-center mx-16 mt-8 mb-24 md:grid-cols-3 sm:grid-cols-2">
+        <!-- mindfulness-part -->
+        <div class="box-border cursor-pointer">
+            <div onclick="pressMindfulness()" id="mindfulness"
+                class="bg-bgColorButton2 w-auto py-12 rounded-xl opacity-75">
+                <img id="mindfulness-white" class="block mx-auto max-w-4xl" src="images/materials/mindfulness.svg"
+                    alt="">
+                <img id="mindfulness-black" class="hidden mx-auto max-w-4xl"
+                    src="images/materials/mindfulness-black.svg" alt="mindfulness-black">
+            </div>
+            <p class="text-center">mindfulness</p>
+        </div>
+        <!-- spiritual-part -->
+        <div class="box-border cursor-pointer">
+            <div id="spiritual-press" onmouseover="onHover()" onmouseout="offHover()" onclick="pressSpiritual()"
+                class="w-auto py-12 border border-borderColor rounded-xl transition duration-300 hover:bg-bgColorButton2 hover:opacity-75">
+                <img id="spiritual" class="max-w-md mx-auto block" src="images/materials/spiritual.svg" alt="spiritual">
+                <img id="spiritual-white" class="hidden mx-auto" src="images/materials/spiritual-white.svg"
+                    alt="spiritual">
+            </div>
+            <p class="text-center">spiritual</p>
+        </div>
+        <!-- focused-part -->
+        <div class="box-border cursor-pointer">
+            <div onmouseover="onHoverFocused()" onmouseout="offHoverFocused()"
+                class="w-auto py-12 border border-borderColor rounded-xl transition duration-300 hover:bg-bgColorButton2 hover:opacity-75">
+                <img id="focused" class="max-w-md mx-auto" src="images/materials/focused.svg" alt="">
+            </div>
+            <p class="text-center">focused</p>
+        </div>
+        <!-- mantra-part -->
+        <div class="box-border cursor-pointer">
+            <div onmouseover="onHovermantra()" onmouseout="offHovermantra()"
+                class="w-auto py-12 border border-borderColor rounded-xl transition duration-300 hover:bg-bgColorButton2 hover:opacity-75">
+                <img id="mantra" class="max-w-md mx-auto" src="images/materials/mantra.svg" alt="">
+            </div>
+            <p class="text-center">mantra</p>
+        </div>
+        <!-- progressive-part -->
+        <div class="box-border cursor-pointer">
+            <div onmouseover="onHoverprogressive()" onmouseout="offHoverprogressive()"
+                class="w-auto py-12 border border-borderColor rounded-xl transition duration-300 hover:bg-bgColorButton2 hover:opacity-75">
+                <img id="progressive" class="max-w-md mx-auto" src="images/materials/progressive.svg" alt="">
+            </div>
+            <p class="text-center">progressive</p>
+        </div>
+        <!-- mindfulness-part -->
+        <div class="box-border cursor-pointer">
+            <div class="w-auto py-12 border border-borderColor rounded-xl">
+                <img class="max-w-md mx-auto" src="images/materials/mindfulness-black.svg" alt="">
+            </div>
+            <p class="text-center">mindfulness</p>
+        </div>
+        <!-- spiritual-part -->
+        <div class="box-border cursor-pointer">
+            <div onmouseover="onHoverspiritual()" onmouseout="offHoverspiritual()"
+                class="w-auto py-12 border border-borderColor rounded-xl hover:bg-bgColorButton2 hover:opacity-75">
+                <img id="spiritual-2" class="max-w-md mx-auto" src="images/materials/spiritual.svg" alt="">
+            </div>
+            <p class="text-center">spiritual</p>
+        </div>
+        <!-- focused-part -->
+        <div class="box-border cursor-pointer">
+            <div class="w-auto py-12 border border-borderColor rounded-xl">
+                <img class="max-w-md mx-auto" src="images/materials/focused.svg" alt="">
+            </div>
+            <p class="text-center">focused</p>
+        </div>
+    </section>
+    <!-- The chatbot section -->
+    <div>
+        <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+        <df-messenger
+            chat-icon="data:image/png;base64,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"
+            chat-title="Minder" agent-id="ea6d26e1-72c1-4a7a-9ab0-d30d1e2df31f" language-code="en">
+            <style>
+                df-messenger {
+                    --df-messenger-bot-message: #E3E9FB;
+                    --df-messenger-user-message: #ffffff;
+                    --df-messenger-button-titlebar-color: #6B75D2;
+                    --df-messenger-button-titlebar-font-color: white;
+                    --df-messenger-chat-background-color: #F3F3F3;
+                    --df-messenger-font-color: black;
+                    --df-messenger-send-icon: #6B75D2;
+                    --df-messenger-chip-border-color: #6B75D2;
+                    --df-messenger-input-box-color: white;
+                    --df-messenger-input-font-color: black;
+                    --df-messenger-input-placeholder-font-color: #BAB3BF;
+                    --df-messenger-minimized-chat-close-icon-color: #E3E9FB;
+                }
+            </style>
+        </df-messenger>
+    </div><!-- the chatbot -->
+    <!-- The audio section -->
+    <div class="flex items-center justify-center pb-14">
+        <img class="mr-2" src="images/home-page/headphones 1.png" alt="headphones">
+        <p class="text-purpleColor text-2xl font-Monda font-bold">Audio</p>
+    </div> <!-- The title and logo -->
+
+    <div
+        class="flex md:justify-evenly lg:justify-evenly xl:justify-evenly 2xl:justify-evenly px-2 md:px-0 lg:px-0 xl:px-0 2xl:px-0 pb-6">
+
+        <div class="hidden lg:flex xl:flex 2xl:flex justify-between w-12 mx-auto pb-2">
+            <button id="aButton1" onclick="AudioButton1()">
+                <img class="w-10 h-10 p-0.5 hover:border-2 hover:border-purpleColor hover:rounded-full"
+                    src="images/home-page/right-arrow 2.png" alt="#">
+            </button>
+        </div><!-- the left arrow -->
+
+        <!-- the picture's grid -->
+        <div class="sliderAx h-auto">
+
+            <!-- First slide -->
+            <div id="audio-1" class="container flex justify-center items-center mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-5">
+                    <div class="flex px-8 py-2 w-[22.5rem] bg-colorLine rounded-lg">
+                        <div class="pr-3">
+                            <div class="w-64">
+                                <p class="font-Monda">Hello, Let’s start our journey, Are you ready?</p>
+                            </div>
+                            <div class="flex">
+                                <p class="text-xs font-Monda text-AudioDetails">Mindfulness</p>
+                                <p class="text-xs font-Monda text-AudioDetails px-8">20 min</p>
+                            </div>
+                        </div><!-- text -->
+                        <div class="flex justify-center items-center">
+                            <button onclick="openAudio()">
+                                <img class="w-7 hover:border-2 hover:border-purpleColor hover:rounded-full"
+                                    src="images/home-page/play button.png" alt="">
+                            </button>
+                        </div><!-- play button -->
+                    </div><!-- Audio number 1 -->
+
+                    <div class="flex px-8 py-2 w-[22.5rem] bg-colorLine  rounded-lg">
+                        <div class="pr-3">
+                            <div class="w-64">
+                                <p class="font-Monda">Hello, Let’s start our journey, Are you ready?</p>
+                            </div>
+                            <div class="flex">
+                                <p class="text-xs font-Monda text-AudioDetails">Mindfulness</p>
+                                <p class="text-xs font-Monda text-AudioDetails px-8">20 min</p>
+                            </div>
+                        </div><!-- text -->
+                        <div class="flex justify-center items-center">
+                            <button onclick="openAudio()">
+                                <img class="w-7 hover:border-2 hover:border-purpleColor hover:rounded-full"
+                                    src="images/home-page/play button.png" alt="">
+                            </button>
+                        </div><!-- play button -->
+                    </div><!-- Audio number 2 -->
+
+                    <div class="flex px-8 py-2 w-[22.5rem] bg-colorLine  rounded-lg">
+                        <div class="pr-3">
+                            <div class="w-64">
+                                <p class="font-Monda">Hello, Let’s start our journey, Are you ready?</p>
+                            </div>
+                            <div class="flex">
+                                <p class="text-xs font-Monda text-AudioDetails">Mindfulness</p>
+                                <p class="text-xs font-Monda text-AudioDetails px-8">20 min</p>
+                            </div>
+                        </div><!-- text -->
+                        <div class="flex justify-center items-center">
+                            <button onclick="openAudio()">
+                                <img class="w-7 hover:border-2 hover:border-purpleColor hover:rounded-full"
+                                    src="images/home-page/play button.png" alt="">
+                            </button>
+                        </div><!-- play button -->
+                    </div><!-- Audio number 3 -->
+
+                </div><!-- the pics grid -->
+                <br>
+            </div><!-- Slide 1 -->
+
+            <!-- Second slide -->
+            <div id="audio-2" class="container flex justify-center items-center mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-5">
+                    <div class="flex px-8 py-2 w-[22.5rem] bg-colorLine  rounded-lg">
+                        <div class="pr-3">
+                            <div class="w-64">
+                                <p class="font-Monda">Blaaa, Let’s start our journey, Are you ready?</p>
+                            </div>
+                            <div class="flex">
+                                <p class="text-xs font-Monda text-AudioDetails">Mindfulness</p>
+                                <p class="text-xs font-Monda text-AudioDetails px-8">20 min</p>
+                            </div>
+                        </div><!-- text -->
+                        <div class="flex justify-center items-center">
+                            <button onclick="openAudio()">
+                                <img class="w-7 hover:border-2 hover:border-purpleColor hover:rounded-full"
+                                    src="images/home-page/play button.png" alt="">
+                            </button>
+                        </div><!-- play button -->
+                    </div><!-- Audio number 1 -->
+
+                    <div class="flex px-8 py-2 w-[22.5rem] bg-colorLine  rounded-lg">
+                        <div class="pr-3">
+                            <div class="w-64">
+                                <p class="font-Monda">Blaaa, Let’s start our journey, Are you ready?</p>
+                            </div>
+                            <div class="flex">
+                                <p class="text-xs font-Monda text-AudioDetails">Mindfulness</p>
+                                <p class="text-xs font-Monda text-AudioDetails px-8">20 min</p>
+                            </div>
+                        </div><!-- text -->
+                        <div class="flex justify-center items-center">
+                            <button onclick="openAudio()">
+                                <img class="w-7 hover:border-2 hover:border-purpleColor hover:rounded-full"
+                                    src="images/home-page/play button.png" alt="">
+                            </button>
+                        </div><!-- play button -->
+                    </div><!-- Audio number 2 -->
+
+                    <div class="flex px-8 py-2 w-[22.5rem] bg-colorLine  rounded-lg">
+                        <div class="pr-3">
+                            <div class="w-64">
+                                <p class="font-Monda">Blaaa, Let’s start our journey, Are you ready?</p>
+                            </div>
+                            <div class="flex">
+                                <p class="text-xs font-Monda text-AudioDetails">Mindfulness</p>
+                                <p class="text-xs font-Monda text-AudioDetails px-8">20 min</p>
+                            </div>
+                        </div><!-- text -->
+                        <div class="flex justify-center items-center">
+                            <button onclick="openAudio()">
+                                <img class="w-7 hover:border-2 hover:border-purpleColor hover:rounded-full"
+                                    src="images/home-page/play button.png" alt="">
+                            </button>
+                        </div><!-- play button -->
+                    </div><!-- Audio number 3 -->
+
+                </div><!-- the pics grid -->
+                <br>
+            </div>
+            <!-- Slide 2 -->
+            <!-- The audio modal -->
+            <div id="audioSection"
+                class="hidden overflow-y-auto overflow-x-hidden fixed justify-center items-center bg-mainFont bg-opacity-60 z-50 w-full inset-0 h-full">
+                <div class="relative p-4 w-full max-w-sm h-full md:pt-48 lg:pt-48 xl:pt-48 2xl:pt-48 md:h-auto">
+                    <!-- Modal content -->
+                    <div
+                        class="relative bg-bgColorHeading md:w-[23.875rem] lg:w-[23.875rem] xl:w-[23.875rem] 2xl:w-[23.875rem] rounded-lg shadow">
+                        <div class="relative mb-8 ">
+                            <button onclick="closeAudio()"
+                                class="absolute top-4 right-4 w-6 h-6 rounded-full text-xs text-center bg-Xbtn text-white transition duration-300 hover:opacity-90">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                            <!--close button -->
+
+                            <div class="flex justify-center text-center">
+                                <img class="mt-4" src="images/audioHeadphone.png" alt="">
+                            </div>
+                            <p class="flex justify-center mx-[7.188rem] mt-3 text-center font-Monda">Hello, Let’s start
+                                our journey,
+                                Are you ready?</p>
+
+                            <div class="flex justify-center items-center mt-5 mx-9">
+                                <div class="w-full bg-white rounded overflow-hidden mb-1.5 cursor-pointer">
+                                    <div class="w-[43%] bg-num p-1 rounded-sm"></div>
+                                </div><!-- The slider -->
+                            </div>
+                            <div class="flex justify-between mx-9 mb-1.5">
+                                <div class="text-xs text-AudioDetails">15:30</div>
+                                <div class="text-xs text-AudioDetails">30:00</div>
+                            </div><!-- The time -->
+
+                            <div class="flex justify-center items-center pb-3">
+                                <div onclick="pauseAudio()" id="pauseButton"
+                                    class="hidden justify-center item-center text-center w-10 h-10 rounded-full bg-white cursor-pointer">
+                                    <i class="fa-solid fa-pause my-auto text-sm text-num"></i>
+                                </div>
+                                <div onclick="playAudio()" id="playButton"
+                                    class="flex justify-center item-center text-center w-10 h-10 rounded-full bg-white cursor-pointer">
+                                    <i class="fa-solid fa-play my-auto text-sm text-num"></i>
+                                </div>
+                            </div> <!-- The button -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- The end of the picture's area -->
+
+        <div class="hidden lg:flex xl:flex 2xl:flex justify-between w-12 mx-auto pb-2">
+            <button id="aButton2" onclick="AudioButton2()">
+                <img class="w-10 h-10 hover:border-2 p-0.5 hover:border-purpleColor hover:rounded-full"
+                    src="images/home-page/right-arrow 1.png" alt="#">
+            </button>
+        </div><!-- The right arrow -->
+
+    </div><!-- The pics area of the audio section -->
+
+    <!-- ****************************** -->
+
+    <!-- The blog section -->
+    <div class="flex items-center justify-center pb-4">
+        <img class="mr-2" src="images/home-page/blogging 1.png" alt="Blogs">
+        <p class="text-purpleColor text-2xl font-Monda font-bold">Blogs</p>
+    </div> <!-- The title and logo -->
+
+    <div
+        class="flex md:justify-evenly lg:justify-evenly xl:justify-evenly 2xl:justify-evenly px-2 md:px-0 lg:px-0 xl:px-0 2xl:px-0 pb-5">
+
+        <div class="hidden lg:flex xl:flex 2xl:flex justify-between w-12 mx-auto pb-2">
+            <button id="bButton1" onclick="blogButton1()">
+                <img class="w-10 h-10 p-0.5 hover:border-2 hover:border-purpleColor hover:rounded-full"
+                    src="images/home-page/right-arrow 2.png" alt="#">
+            </button>
+        </div><!-- the left arrow -->
+
+        <!-- the picture's grid -->
+        <div class="sliderAx h-auto">
+
+            <!-- First slide -->
+            <div id="blog-1" class="container flex justify-center items-center mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-5">
+                    <div class=" bg-colorLine  w-[22.5rem] rounded-lg">
+                        <div class="h-36">
+                            <img src="images/home-page/wallpaper.png" alt="wallpaper">
+                        </div><!-- img -->
+                        <div>
+                            <div class="flex">
+                                <p class="text-base font-Monda text-purpleColor pl-3 pt-4">Dr.Emam Ahmed</p>
+                                <button onclick="openBlog()"
+                                    class="w-20 h-8 font-Monda bg-bgColorFooter text-white rounded-lg ml-20 -mt-4 transition duration-300 hover:bg-white hover:text-bgColorFooter">
+                                    Read
+                                </button>
+                            </div>
+                            <div>
+                                <p class="text-lg font-Monda font-medium pl-3 pb-6">“Six Steps For improving sleep”
+                                </p>
+                            </div>
+                        </div><!-- text -->
+                    </div><!-- Blog number 1 -->
+
+                    <div class=" bg-colorLine  w-[22.5rem] rounded-lg">
+                        <div class="h-36">
+                            <img src="images/home-page/wallpaper.png" alt="wallpaper">
+                        </div><!-- img -->
+                        <div>
+                            <div class="flex">
+                                <p class="text-base font-Monda text-purpleColor pl-3 pt-4">Dr.Emam Ahmed</p>
+                                <button onclick="openBlog()"
+                                    class="w-20 h-8 font-Monda bg-bgColorFooter text-white rounded-lg ml-20 -mt-4 transition duration-300 hover:bg-white hover:text-bgColorFooter">
+                                    Read
+                                </button>
+                            </div>
+                            <div>
+                                <p class="text-lg font-Monda font-medium pl-3 pb-6">“Six Steps For improving sleep”
+                                </p>
+                            </div>
+                        </div><!-- text -->
+                    </div><!-- Blog number 2 -->
+
+                    <div class=" bg-colorLine  w-[22.5rem] rounded-lg">
+                        <div class="h-36">
+                            <img src="images/home-page/wallpaper.png" alt="wallpaper">
+                        </div><!-- img -->
+                        <div>
+                            <div class="flex">
+                                <p class="text-base font-Monda text-purpleColor pl-3 pt-4">Dr.Emam Ahmed</p>
+                                <button onclick="openBlog()"
+                                    class="w-20 h-8 font-Monda bg-bgColorFooter text-white rounded-lg ml-20 -mt-4 transition duration-300 hover:bg-white hover:text-bgColorFooter">
+                                    Read
+                                </button>
+                            </div>
+                            <div>
+                                <p class="text-lg font-Monda font-medium pl-3 pb-6">“Six Steps For improving sleep”
+                                </p>
+                            </div>
+                        </div><!-- text -->
+                    </div><!-- Blog number 3 -->
+
+                </div>
+                <br>
+            </div><!-- Slide 1 -->
+
+            <!-- Second slide -->
+            <div id="blog-2" class="container flex justify-center items-center mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-5">
+                    <div class=" bg-colorLine  w-[22.5rem] rounded-lg">
+                        <div class="h-36">
+                            <img src="images/home-page/wallpaper.png" alt="wallpaper">
+                        </div><!-- img -->
+                        <div>
+                            <div class="flex">
+                                <p class="text-base font-Monda text-purpleColor pl-3 pt-4">Dr.Emam Ahmed</p>
+                                <button onclick="openBlog()"
+                                    class="w-20 h-8 font-Monda bg-bgColorFooter text-white rounded-lg ml-20 -mt-4 transition duration-300 hover:bg-white hover:text-bgColorFooter">
+                                    Read
+                                </button>
+                            </div>
+                            <div>
+                                <p class="text-lg font-Monda font-medium pl-3 pb-6">“Seven Steps For improving
+                                    sleep”</p>
+                            </div>
+                        </div><!-- text -->
+                    </div><!-- Blog number 1 -->
+
+                    <div class=" bg-colorLine  w-[22.5rem] rounded-lg">
+                        <div class="h-36">
+                            <img src="images/home-page/wallpaper.png" alt="wallpaper">
+                        </div><!-- img -->
+                        <div>
+                            <div class="flex">
+                                <p class="text-base font-Monda text-purpleColor pl-3 pt-4">Dr.Emam Ahmed</p>
+                                <button onclick="openBlog()"
+                                    class="w-20 h-8 font-Monda bg-bgColorFooter text-white rounded-lg ml-20 -mt-4 transition duration-300 hover:bg-white hover:text-bgColorFooter">
+                                    Read
+                                </button>
+                            </div>
+                            <div>
+                                <p class="text-lg font-Monda font-medium pl-3 pb-6">“Seven Steps For improving
+                                    sleep”</p>
+                            </div>
+                        </div><!-- text -->
+                    </div><!-- Blog number 2 -->
+
+                    <div class=" bg-colorLine  w-[22.5rem] rounded-lg">
+                        <div class="h-36">
+                            <img src="images/home-page/wallpaper.png" alt="wallpaper">
+                        </div><!-- img -->
+                        <div>
+                            <div class="flex">
+                                <p class="text-base font-Monda text-purpleColor pl-3 pt-4">Dr.Emam Ahmed</p>
+                                <button onclick="openBlog()"
+                                    class="w-20 h-8 font-Monda bg-bgColorFooter text-white rounded-lg ml-20 -mt-4 transition duration-300 hover:bg-white hover:text-bgColorFooter">
+                                    Read
+                                </button>
+                            </div>
+                            <div>
+                                <p class="text-lg font-Monda font-medium pl-3 pb-6">“Seven Steps For improving
+                                    sleep”</p>
+                            </div>
+                        </div><!-- text -->
+                    </div><!-- Blog number 3 -->
+
+                </div>
+                <br>
+            </div>
+            <!-- Second slide -->
+        </div><!-- The end of the picture's area -->
+
+        <div class="hidden lg:flex xl:flex 2xl:flex justify-between w-12 mx-auto pb-2">
+            <button id="bButton2" onclick="blogButton2()">
+                <img class="w-10 h-10 hover:border-2 p-0.5 hover:border-purpleColor hover:rounded-full"
+                    src="images/home-page/right-arrow 1.png" alt="#">
+            </button>
+        </div><!-- The right arrow -->
+
+    </div><!-- The pics area of the Blogs section -->
+
+    <!-- ****************************** -->
+    <!-- The blog modal -->
+    <div id="blogModal"
+        class="hidden overflow-y-auto overflow-x-hidden fixed justify-center items-center bg-mainFont bg-opacity-60 z-50 w-full inset-0 h-full">
+        <div class="relative p-4 w-full max-w-2xl h-full lg:pt-20 xl:pt-20 2xl:pt-20 md:h-auto">
+            <!-- Modal content -->
+            <div
+                class="relative bg-bgColorHeading rounded-lg shadow pt-4 lg:w-[49.0625rem] xl:w-[49.0625rem] 2xl:w-[49.0625rem]">
+                <div class="relative mb-8 ">
+                    <button onclick="blogCloseButton()"
+                        class="absolute top-0 lg:top-4 xl:top-4 2xl:top-4 right-4 w-6 h-6 rounded-full text-xs text-center bg-Xbtn text-white transition duration-300 hover:opacity-90">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <!--close button -->
+
+                <div>
+                    <img class="w-72 h-40 mx-auto lg:float-right xl:float-right 2xl:float-right rounded-2xl lg:mt-0 lg:mr-14 lg:ml-8 lg:mb-3 xl:mt-0 xl:mr-14 xl:ml-8 xl:mb-3 2xl:mt-0 2xl:mr-14 2xl:ml-8 2xl:mb-3"
+                        src="images/materials/Blogs.svg" alt="">
+                    <p class="text-2xl font-Monda font-medium pt-4 lg:pt-0 xl:pt-0 2xl:pt-0 pl-5 pb-4">“Six Steps For
+                        improving sleep”</p>
+                    <p class="text-sm font-bold font-Monda text-bgColorFooter pl-5 pb-5">Dr.Emam Ahmed</p>
+
+                    <div class="pl-5 pb-6 lg:pb-14 xl:pb-14 2xl:pb-14 pr-6">
+                        <p class="text-[0.6875rem] font-Monda leading-loose">You're not doomed to toss and turn every
+                            night.
+                            Consider simple tips for better sleep, from setting a sleep schedule to including physical
+                            activity in your daily routine.</p>
+                        <p class="text-[0.6875rem] font-Monda leading-loose">While you might not be able to control the
+                            factors that interfere with your sleep, you can adopt habits that encourage better sleep.
+                            Start
+                            with these simple tips.</p>
+                        <p class="text-[0.6875rem] font-Monda leading-loose"><span class="text-bgColorButton2">1.Sleep
+                                only
+                                as much as you need to feel refreshed the following day.</span> It’s important to not
+                            spend
+                            too much time in bed trying to sleep. Excessively long times in bed can lead to fragmented
+                            (waking up a lot) and shallow sleep. Most adults need 7 to 8-1/2 hours of sleep per night.
+                        </p>
+                        <p class="text-[0.6875rem] font-Monda leading-loose"><span class="text-bgColorButton2">2.Get up
+                                at
+                                the same time every morning.</span> Do this even on weekends and holidays. This helps to
+                            set
+                            your “biological clock.”</p>
+                        <p class="text-[0.6875rem] font-Monda leading-loose"><span
+                                class="text-bgColorButton2">3.Exercise
+                                regularly. </span>Exercise improves the quality of sleep, allowing you to fall asleep
+                            and
+                            stay asleep more easily. Many people do best to exercise during the morning or daytime
+                            hours,
+                            and should avoid exercise within three hours of bedtime. However, others find that evening
+                            exercise will help them improve their sleep. Go ahead, experiment with the timing of your
+                            exercis.</p>
+                        <p class="text-[0.6875rem] font-Monda leading-loose"><span class="text-bgColorButton2">4.Make
+                                your
+                                bedroom quiet, cool and dark. </span>An easy way to remember this: your bedroom should
+                            remind you of a cave. While this may not sound romantic, it seems to work for bats. Bats are
+                            champion sleepers, getting about 16 hours of sleep each day.</p>
+                        <p class="text-[0.6875rem] font-Monda leading-loose"><span class="text-bgColorButton2">5.Don’t
+                                go to
+                                bed unless you are sleepy. </span>If you aren’t sleepy at bedtime, do something else.
+                            Read a
+                            book, listen to soft music, or browse through a magazine. Find something relaxing, but not
+                            stimulating, to take your mind off of worries about sleep.</p>
+                        <p class="text-[0.6875rem] font-Monda leading-loose"><span class="text-bgColorButton2">6.Turn
+                                your
+                                alarm clock around. </span>Clock-watching can lead to worry, frustration and anger—all
+                            of
+                            which can interfere with a good night’s sleep.</p>
+                    </div><!-- The paragraph text -->
+
+                </div><!-- The content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- The Video section -->
+
+    <div class="flex items-center justify-center pb-5">
+        <img class="mr-2" src="images/home-page/video-camera-with-play-button (1) 1.png" alt="Videos">
+        <p class="text-purpleColor text-2xl font-Monda font-bold">Videos</p>
+    </div> <!-- The title and logo -->
+
+    <div
+        class="flex md:justify-evenly lg:justify-evenly xl:justify-evenly 2xl:justify-evenly px-2 md:px-0 lg:px-0 xl:px-0 2xl:px-0 pb-6">
+
+        <div class="hidden lg:flex xl:flex 2xl:flex justify-between w-12 mx-auto pb-2">
+            <button id="vButton1" onclick="videoButton1()">
+                <img class="w-10 h-10 p-0.5 hover:border-2 hover:border-purpleColor hover:rounded-full"
+                    src="images/home-page/right-arrow 2.png" alt="#">
+            </button>
+        </div><!-- the left arrow -->
+
+        <!-- the picture's grid -->
+        <div class="sliderAx h-auto">
+
+            <!-- First slide -->
+            <div id="video-1" class="container flex justify-center items-center mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-5 ">
+                    <div class="bg-colorLine  w-[22.5rem] h-56 rounded-lg">
+                        <button onclick="openVideo()">
+                            <img class="" src="images/home-page/videos.png" alt="video">
+                        </button><!-- pic -->
+                        <div>
+                            <p class="px-4 py-1 font-Monda font-medium">Hello, Let’s start our journey, Are you
+                                ready?</p>
+                        </div><!-- text -->
+                    </div><!-- Video number 1 -->
+
+                    <div class="bg-colorLine  w-[22.5rem] h-56 rounded-lg">
+                        <button onclick="openVideo()">
+                            <img class="" src="images/home-page/videos.png" alt="video">
+                        </button><!-- pic -->
+                        <div>
+                            <p class="px-4 py-1 font-Monda font-medium">Hello, Let’s start our journey, Are you
+                                ready?</p>
+                        </div><!-- text -->
+                    </div><!-- Video number 2 -->
+
+                    <div class="bg-colorLine  w-[22.5rem] h-56 rounded-lg">
+                        <button onclick="openVideo()">
+                            <img class="" src="images/home-page/videos.png" alt="video">
+                        </button><!-- pic -->
+                        <div>
+                            <p class="px-4 py-1 font-Monda font-medium">Hello, Let’s start our journey, Are you
+                                ready?</p>
+                        </div><!-- text -->
+                    </div><!-- Video number 3 -->
+                </div>
+                <br>
+            </div><!-- Slide 1 -->
+
+
+            <!-- Second slide -->
+            <div id="video-2" class="container flex justify-center items-center mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-5 ">
+                    <div class="bg-colorLine  w-[22.5rem] h-56 rounded-lg">
+                        <button onclick="openVideo()">
+                            <img class="" src="images/home-page/videos.png" alt="vidgteo">
+                        </button><!-- pic -->
+                        <div>
+                            <p class="px-4 py-1 font-Monda font-medium">blaaaa, Let’s start our journey, Are you
+                                ready?</p>
+                        </div><!-- text -->
+                    </div><!-- Video number 1 -->
+
+                    <div class="bg-colorLine  w-[22.5rem] h-56 rounded-lg">
+                        <button onclick="openVideo()">
+                            <img class="" src="images/home-page/videos.png" alt="video">
+                        </button><!-- pic -->
+                        <div>
+                            <p class="px-4 py-1 font-Monda font-medium">blaaaa, Let’s start our journey, Are you
+                                ready?</p>
+                        </div><!-- text -->
+                    </div><!-- Video number 2 -->
+
+                    <div class="bg-colorLine  w-[22.5rem] h-56 rounded-lg">
+                        <button onclick="openVideo()">
+                            <img class="" src="images/home-page/videos.png" alt="video">
+                        </button><!-- pic -->
+                        <div>
+                            <p class="px-4 py-1 font-Monda font-medium">blaaaa, Let’s start our journey, Are you
+                                ready?</p>
+                        </div><!-- text -->
+                    </div><!-- Video number 3 -->
+                </div>
+                <br>
+            </div>
+            <!-- Slide 2 -->
+            <!-- The video modal -->
+            <div id="videoSection"
+                class="hidden overflow-y-auto overflow-x-hidden fixed justify-center items-center bg-mainFont bg-opacity-60 z-50 w-full inset-0 h-full">
+                <div class="relative p-4 w-full max-w-2xl h-full md:pt-48 lg:pt-48 xl:pt-48 2xl:pt-48 md:h-auto">
+                    <!-- Modal content -->
+                    <div class="relative bg-bgColorHeading rounded-lg shadow">
+                        <div class="relative mb-8 ">
+
+                            <video class="relative w-full h-full" controls>
+                                <source src="video/Best Funny cats short video.mkv" type="video/mkv">
+                            </video>
+                            <button onclick="closeVideo()"
+                                class="absolute top-2 right-2 w-6 h-6 rounded-full text-sm text-center text-white transition duration-300 hover:opacity-90">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- The end of the picture's area -->
+
+        <div class="hidden lg:flex xl:flex 2xl:flex justify-between w-12 mx-auto pb-2">
+            <button id="vButton2" onclick="videoButton2()">
+                <img class="w-10 h-10 hover:border-2 p-0.5 hover:border-purpleColor hover:rounded-full"
+                    src="images/home-page/right-arrow 1.png" alt="#">
+            </button>
+        </div><!-- The right arrow -->
+
+    </div><!-- The pics area of the Blogs section -->
+
+    </div><!-- The end of the materials section -->
+
+    <!-- *********************************************************** -->
+
+
+    <!-- Start Footer-Section -->
+    <footer class=" bg-bgColorFooter max-w-full py-4">
+        <div
+            class=" container flex justify-between items-center max-w-full px-10 box-border sm:flex-col sm:justify-start sm:items-start sm:max-w-full sm:px-0 sm:ml-5">
+            <div class=" ml-14 sm:ml-0 sm:mb-5">
+                <img class=" ml-5 sm:m-0" src="images/Landing-page/footer-logo.png" alt="logo">
+                <div class=" flex items-center sm:justify-start">
+                    <img class=" mr-2" src="images/Landing-page/email 1.png" alt="email">
+                    <a class=" text-FontColor1 font-Monda font-normal text-base"
+                        href="mailto:info@minder.org?subject=Contact">info@minder.org</a>
+                </div>
+            </div>
+            <div
+                class="copy relative top-14 text-center text-FontColor1 font-Monda font-semibold text-xs sm:top-0 sm:text-left sm:mt-5 sm:order-last">
+                <p>Copyrights © 2022 All Rights Reserved by Minder</p>
+            </div>
+            <div class=" text-center text-FontColor1  mr-10 sm:text-left sm:mb-2 sm:order-2">
+                <h2 class=" font-Monda not-italic font-bold text-2xl mb-3 mt-3">Follow Us:</h2>
+                <div class=" text-xl">
+                    <a href=""><i class="fa-brands fa-facebook-f mr-5 ml-3 sm:ml-0"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter mr-5"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram mr-5"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin-in mr-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="JS/main.js"></script>
+</body>
+
+</html>

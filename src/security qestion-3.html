@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class=" scroll-smooth m-0 p-0">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind.CSS Link -->
+    <link rel="stylesheet" href="../dist/output.css">
+    <!--Fontawesome icons-->
+    <link rel="stylesheet" href="css/all.css">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Monda:wght@400;700&family=Work+Sans:ital,wght@0,300;0,600;1,100;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <title>security question</title>
+</head>
+
+<body>
+    <!-- Container That carry sign-up page content -->
+    <div
+        class=" max-w-full min-h-screen box-border container grid grid-cols-2 md:grid-cols-1 md:max-w-full md:max-h-full sm:grid-cols-1 sm:max-w-full sm:max-h-full">
+        <!-- left-hand-side refers to logo container -->
+        <div class=" bg-bgColorHeading max-w-full relative box-border md:h-full sm:h-full sm:py-36 md:py-36">
+            <div
+                class=" bg-bgColorFooter rounded-2xl w-4/5 h-auto py-80 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:py-0 md:h-full md:max-w-full md:rounded-lg sm:py-0 sm:h-full sm:w-full sm:rounded-none">
+                <img class=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 sm:w-44 md:w-48"
+                    src="images/Sign-UP/minder.svg" alt="logo">
+            </div>
+        </div>
+        <!-- right-hand-side refers to form container -->
+        <section class=" bg-sign-up-bgcolor max-w-full box-border container min-h-screen">
+            <div class="grid grid-cols-1 items-center">
+                <!-- Step of question and percentage bar -->
+                <div class="px-12 sm:px-3">
+                    <a href="security qestion.html"><img class="w-7 mt-8 " src="images/Space-page/Arrow - Left.svg"
+                            alt="Arrow"></a>
+                    <!-- percentage part -->
+                    <div class="mt-5 px-3">
+                        <div class="font-Monda text-2xl text-bgColorButton1 font-normal not-italic pl-1 mb-2">Step 3
+                        </div>
+                        <div class="w-auto bg-colorLine rounded-full h-1 dark:bg-colorLine">
+                            <div class="bg-FemaleColor h-1 rounded-full dark:bg-FemaleColor" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- security question part -->
+                <div class="mt-20">
+                    <!-- part of head & text -->
+                    <div class="text-center">
+                        <h2 class="font-Monda text-4xl font-medium text-bgColorFooter tracking-wide mb-3 sm:text-3xl">
+                            Security Questions</h2>
+                        <p class="font-Monda text-sm text-fontColor2">Fill the data below so that we can help you
+                            <span class="block tracking-wide">for reset your password.</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- part of security question -->
+                <div class="grid grid-cols-1 pl-32 mt-12 sm:px-5">
+                    <button
+                        class="bg-bgColorButton1 block cursor-text text-white w-4/5 py-3 mb-10 rounded-xl font-Monda text-xl sm:text-lg sm:w-full">Who is your Favourite Teacher?</button>
+                    <label>
+                        <input
+                            class="block w-4/5 py-3 rounded-xl placeholder:font-Monda pl-5 outline-none placeholder:text-base placeholder:text-sign-up-fontColor sm:w-full"
+                            type="text" placeholder="answer">
+                    </label>
+                    <a href="home-page.html"><button
+                            class="font-Monda text-base w-4/5 mt-10 bg-FemaleColor text-white py-3 rounded-xl md:mb-10 sm:text-lg sm:w-full">Continue</button></a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

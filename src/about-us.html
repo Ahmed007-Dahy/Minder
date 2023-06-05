@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Monda:wght@400;700&family=Work+Sans:ital,wght@0,300;0,600;1,100;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <title>about us</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body class="scroll-smooth" onload="aboutLoad()">
+    <!-- The navbar -->
+    <!-- navBar-part -->
+    <header class="bg-bgColorFooter text-white h-20">
+        <div class="container max-w-full flex items-center justify-between px-16 md:px-10 sm:px-8">
+            <div class="py-3"><img src="images/materials/logo.png" alt=""></div>
+
+            <button id="toggle" class=" lg:hidden xl:hidden 2xl:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <nav id="nav"
+                class="fixed z-20 top-12 bottom-0 -right-full bg-bgColorFooter w-52  lg:w-auto lg:static xl:w-auto xl:static 2xl:w-auto 2xl:static transition-all sm:top-16">
+                <ul class=" lg:flex xl:flex 2xl:flex">
+                    <li onclick="homeButton()">
+                        <a id="home"
+                            class="font-Monda block mt-7 mr-11 px-2 pb-4 text-lg hover:border-b-4 rounded-sm border-mainFont md:w-full sm:w-full"
+                            href="home-page.html">Home</a>
+                    </li>
+                    <li onclick="aboutUsButton()">
+                        <a id="aboutUs"
+                            class="font-Monda block mt-7 mr-11 px-2 pb-4 text-lg hover:border-b-4 hover:rounded-sm border-mainFont transition duration-300 md:w-full sm:w-full"
+                            href="index.html">About us</a>
+                    </li>
+                    <li onclick="materialsButton()">
+                        <a id="Materials"
+                            class="font-Monda block mt-7 mr-11 px-2 pb-4 text-lg hover:border-b-4 hover:rounded-sm border-mainFont transition duration-300 md:w-full sm:w-full"
+                            href="material.html">Materials</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- *********************************************************** -->
+
+    <!-- Get the App button -->
+    <div>
+        <button class="transition duration-300 hover:opacity-90 fixed -rotate-90 -left-11 bottom-2/4 z-20 uppercase text-white bg-bgColorFooter rounded-lg text-sm text-center
+                    font-semibold font-Monda px-5 py-3">get the app
+        </button>
+    </div>
+    <!-- *********************************************************** -->
+    <!-- User-profile-Part -->
+    <section id="userProfile"
+        class="hidden overflow-x-scroll z-20 top-0 bottom-0 right-0 bg-sign-up-bgcolor pb-36 w-[30%] sm:w-3/4">
+        <button onclick="closeProfile()">
+            <img class="absolute top-5 ml-4" src="images/Space-page/Arrow - Left.svg" alt="arrow-left">
+        </button>
+        <div class="grid grid-cols-1 justify-center">
+            <!-- Profile-icon-part -->
+            <div class="block mx-auto">
+                <h2 class="text-center font-Monda font-bold text-3xl not-italic sm:text-2xl">Profile</h2>
+                <button>
+                    <img class="w-3/4 my-1 mx-auto sm:w-2/3" src="images/home-page/user-profile.svg" alt="user">
+                </button>
+                <p class="text-center font-Monda font-normal text-xl sm:text-lg">Anon</p>
+            </div>
+            <!-- My account-button -->
+            <button onclick="showName()"
+                class="flex relative items-center justify-center text-white bg-bgColorButton2 font-Monda w-3/5 mx-auto my-2 py-2 rounded-xl sm:w-3/4">
+                <i class="fa-solid fa-user mr-2"></i>
+                <span class="mr-2 font-Monda font-bold text-lg not-italic">My Account</span>
+                <i id="iconDown" class="fa-solid fa-angle-down absolute right-0 pr-5 pt-0.5 text-xl content-end"></i>
+                <button onclick="hideName()" id="iconUP"
+                    class="absolute opacity-0 top-[27%] right-[24.3%] pt-0.5 text-xl content-end text-white sm:top-[27.7%] sm:right-[20%]"><i
+                        class="fa-solid fa-angle-up"></i></button>
+            </button>
+            <div id="formModal" class="hidden mt-2">
+                <!-- Name-Part -->
+                <label class="block mb-5 relative">
+                    <i
+                        class="absolute fa-solid fa-address-card text-sign-up-fontColor right-[75%] top-[33%] text-base pl-3 sm:right-[78%]"></i>
+                    <input
+                        class="focus-within:bg-bgColorHeading focus-within:border focus-within:border-bgColorFooter outline-none w-3/5 mx-auto block bg-lableBackground py-2 pl-7 rounded-xl placeholder:font-Monda placeholder:font-bold placeholder:text-sm placeholder:text-sign-up-fontColor sm:w-3/4"
+                        type="text" name="name" placeholder="Name">
+                </label>
+                <!-- UserName-Part -->
+                <label class="block relative">
+                    <i
+                        class="fa-solid fa-address-card absolute text-sign-up-fontColor right-[75%] top-[33%] text-base pl-3 sm:right-[78%]"></i>
+                    <input
+                        class="focus-within:bg-bgColorHeading focus-within:border focus-within:border-bgColorFooter outline-none w-3/5 mx-auto block bg-lableBackground py-2 pl-7 rounded-xl placeholder:font-Monda placeholder:font-bold placeholder:text-sm placeholder:text-sign-up-fontColor sm:w-3/4"
+                        type="text" name="Username" placeholder="Username">
+                </label>
+                <!-- change-Password-Part -->
+                <button onclick="showPassword()"
+                    class="flex relative items-center justify-center text-white bg-bgColorButton2 font-Monda w-3/5 mx-auto my-4 py-2 rounded-xl sm:w-3/4">
+                    <span class="mr-2 font-Monda font-bold text-lg not-italic">Cahnge password</span>
+                    <i id="iconLow"
+                        class="fa-solid fa-angle-down absolute right-0 pr-5 pt-0.5 text-xl content-end sm:-right-2"></i>
+                    <button onclick="hidePassword()" id="iconHigh"
+                        class="absolute opacity-0 block z-20 top-[52.7%] right-[24.4%] pt-0.5 text-xl text-white content-end sm:top-[55.3%] sm:right-[17%]"><i
+                            class="fa-solid fa-angle-up"></i></button>
+                </button>
+                <!-- Password-Modal-Part -->
+                <div id="passwordModal" class="hidden mt-2">
+                    <!-- password -->
+                    <label class="block mb-5 relative">
+                        <i
+                            class="fa-solid fa-lock absolute text-sign-up-fontColor top-1/3 left-[20%] text-base pl-3 sm:left-[12.5%]"></i>
+                        <input
+                            class="focus-within:bg-bgColorHeading focus-within:border focus-within:border-bgColorFooter outline-none w-3/5 mx-auto block bg-lableBackground py-2 pl-7 rounded-xl placeholder:font-Monda placeholder:font-bold placeholder:text-sm placeholder:text-sign-up-fontColor sm:w-3/4"
+                            type="password" name="password" placeholder="Your password">
+                    </label>
+                    <!-- new-password-Part -->
+                    <label class="block relative">
+                        <i
+                            class="fa-solid fa-lock absolute text-sign-up-fontColor top-1/3 left-[20%] text-base pl-3 sm:left-[13%]"></i>
+                        <input
+                            class="focus-within:bg-bgColorHeading focus-within:border focus-within:border-bgColorFooter outline-none w-3/5 mx-auto block bg-lableBackground py-2 pl-7 rounded-xl placeholder:font-Monda placeholder:font-bold placeholder:text-sm placeholder:text-sign-up-fontColor sm:w-3/4"
+                            type="password" name="confirmPassword" placeholder=" New Password">
+                    </label>
+                    <button onclick="showMsg()"
+                        class="bg-FemaleColor w-1/4 py-2 mx-auto mt-4 rounded-lg text-white font-Monda not-italic font-bold block sm:w-1/3">Reset</button>
+                </div>
+                <!-- Password-Msg-Part -->
+                <div id="passwordMsg"
+                    class="hidden bg-mainFont text-white text-center font-Monda pt-8 w-2/3 h-[15%] mx-auto absolute top-[58%] left-[17%] sm:h-auto sm:pt-3 sm:top-[60%]">
+                    <p class="mx-10">Your password has been
+                        changed succesfully!</p>
+                </div>
+            </div>
+            <!-- Payment-Button -->
+            <button
+                class="flex relative items-center justify-center text-white bg-bgColorButton2 font-Monda w-3/5 mx-auto my-4 py-2 rounded-xl sm:w-3/4">
+                <i class="fa-solid fa-wallet mr-2"></i> <span
+                    class="mr-2 font-Monda font-bold text-lg not-italic">Payment</span>
+                <i class="fa-solid fa-angle-down absolute right-0 pr-5 pt-0.5 text-xl content-end"></i>
+            </button>
+            <!-- Mood Statics box -->
+            <div
+                class="bg-bgColorButton2 text-white text-center mx-auto w-3/4 h-auto mt-3 pb-4 rounded-lg opacity-80 box-border sm:w-full sm:">
+                <h2 class="font-Monda not-italic font-bold text-lg">Mood Statics</h2>
+                <div class="relative flex flex-row items-center justify-between mt-10">
+                    <div class="flex flex-col max-w-full">
+                        <div
+                            class="w-32 absolute right-[74%] top-5 -rotate-90 bg-white rounded-full h-0.5 mt-10 dark:bg-white sm:right-[69%]">
+                            <div class="bg-num h-0.5 rounded-full dark:bg-num" style="width: 45%"></div>
+                        </div>
+                        <img class="w-14 mt-32 sm:w-10" src="images/home-page/mood1.png" alt="">
+                    </div>
+                    <div class="flex flex-col max-w-full">
+                        <div
+                            class="w-32 absolute right-[55%] top-5 -rotate-90 bg-white rounded-full h-0.5 mt-10 dark:bg-white  sm:right-[50%]">
+                            <div class="bg-num h-0.5 rounded-full dark:bg-num" style="width: 70%"></div>
+                        </div>
+                        <img class="w-14 mt-32 sm:w-10" src="images/home-page/mood2.png" alt="">
+                    </div>
+                    <div class="flex flex-col max-w-full">
+                        <div
+                            class="w-32 absolute right-[32%] top-5 -rotate-90 bg-white rounded-full h-0.5 mt-10 dark:bg-white sm:right-[28%]">
+                            <div class="bg-num h-0.5 rounded-full dark:bg-num" style="width: 35%"></div>
+                        </div>
+                        <img class="w-14 mt-32 sm:w-10" src="images/home-page/mood3.png" alt="">
+                    </div>
+                    <div class="flex flex-col max-w-full">
+                        <div
+                            class="w-32 absolute right-[11%] top-5 -rotate-90 bg-white rounded-full h-0.5 mt-10 dark:bg-white sm:right-[6%]">
+                            <div class="bg-num h-0.5 rounded-full dark:bg-num" style="width: 80%"></div>
+                        </div>
+                        <img class="w-14 mt-32 sm:w-10" src="images/home-page/mood4.png" alt="">
+                    </div>
+                    <div class="flex flex-col max-w-full">
+                        <div
+                            class="w-32 absolute -right-9 top-5 -rotate-90 bg-white rounded-full h-0.5 mt-10 dark:bg-white sm:-right-11">
+                            <div class="bg-num h-0.5 rounded-full dark:bg-num" style="width: 15%"></div>
+                        </div>
+                        <img class="w-14 mt-32 sm:w-10" src="images/home-page/mood5.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Calender-button -->
+            <button
+                class="flex relative items-center justify-center text-white bg-bgColorButton2 font-Monda w-3/5 mx-auto py-2 mt-5 rounded-xl sm:w-3/4">
+                <i class="fa-solid fa-calendar-days mr-2"></i>
+                <span class="mr-2 font-Monda font-bold text-lg not-italic">Calender</span>
+                <i class="fa-solid fa-angle-down absolute right-0 pr-5 pt-0.5 text-xl content-end"></i>
+            </button>
+            <!-- log-out-button -->
+            <button
+                class="flex relative items-center justify-center text-white bg-bgColorButton2 font-Monda w-3/5 mx-auto py-2 mt-5 rounded-xl sm:w-3/4">
+                <i class="fa-solid fa-door-open mr-2"></i>
+                <span class="mr-2 font-Monda font-bold text-lg not-italic">Log Out</span>
+                <i class="fa-solid fa-angle-right absolute right-0 pr-5 pt-0.5 text-xl content-end"></i>
+            </button>
+        </div>
+    </section>
+    <!-- The chatbot section -->
+    <div>
+        <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+        <df-messenger
+            chat-icon="data:image/png;base64,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"
+            chat-title="Minder" agent-id="ea6d26e1-72c1-4a7a-9ab0-d30d1e2df31f" language-code="en">
+            <style>
+                df-messenger {
+                    --df-messenger-bot-message: #E3E9FB;
+                    --df-messenger-user-message: #ffffff;
+                    --df-messenger-button-titlebar-color: #6B75D2;
+                    --df-messenger-button-titlebar-font-color: white;
+                    --df-messenger-chat-background-color: #F3F3F3;
+                    --df-messenger-font-color: black;
+                    --df-messenger-send-icon: #6B75D2;
+                    --df-messenger-chip-border-color: #6B75D2;
+                    --df-messenger-input-box-color: white;
+                    --df-messenger-input-font-color: black;
+                    --df-messenger-input-placeholder-font-color: #BAB3BF;
+                    --df-messenger-minimized-chat-close-icon-color: #E3E9FB;
+                }
+            </style>
+        </df-messenger>
+    </div>
+    <!-- the chatbot -->
+    <!-- ********************************** -->
+    <!-- Minder-Logo -->
+    <div class=" bg-bgColorHeading max-w-full h-auto pb-48 sm:pb-24">
+        <div class="container max-w-full flex items-center pt-32 justify-around sm:flex sm:flex-col">
+            <div
+                class="text-FontColor text-center font-Cairo font-semibold text-3xl max-w-xl leading-relaxed mt-16 sm:mt-0 sm:text-xl md:max-w-md">
+                <h2>“Minder is here for your mental health, think of it as your friend who does it's best to help you.”
+                </h2>
+            </div>
+            <div class="max-w-xl sm:order-first sm:my-5 sm:max-w-xs md:max-w-sm">
+                <img src="images/Sign-UP/minder.svg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="break-bar bg-white mix-blend-overlay blur-sm max-w-full h-24 mb-0  relative -top-20 sm:h-14 sm:-top-9">
+    </div>
+    <!-- Team member pictures section -->
+    <div class="grid grid-cols-1 items-center">
+        <!-- Development-Team -->
+        <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000"
+            data-aos-easing="ease-in-out" data-aos-once="false"
+            class="grid grid-cols-4 gap-32 items-center mx-auto justify-between mb-28 md:grid-cols-2 sm:grid-cols-1 sm:justify-center sm:gap-12 sm:mb-12">
+            <!-- Eyad -->
+            <div class="mt-5">
+                <img class="w-full transition-transform duration-300 hover:scale-110" src="images/about-us/Eyad.svg"
+                    alt="Eyad">
+                <!-- captions Back-End -->
+                <div class="text-center font-Monda not-italic text-FontColor">
+                    <h1 class="font-semibold text-3xl mb-4">Eyad Hamza</h1>
+                    <h3 class="font-medium text-xl">Backend Developer</h3>
+                </div>
+            </div>
+            <!-- Nour -->
+            <div class="mb-20 sm:mb-0">
+                <img class="w-full transition-transform duration-300 hover:scale-110" src="images/about-us/Nour.svg"
+                    alt="Nour">
+                <!-- captions Flutter -->
+                <div class="text-center font-Monda not-italic text-FontColor">
+                    <h1 class="font-semibold text-3xl mb-4">Mohamed Nour</h1>
+                    <h3 class="font-medium text-xl">Flutter Developer</h3>
+                </div>
+            </div>
+            <!-- Renad -->
+            <div class="mt-5">
+                <img class="w-full transition-transform duration-300 hover:scale-110" src="images/about-us/Renad.svg"
+                    alt="Renad">
+                <!-- cation Fron-End -->
+                <div class="text-center font-Monda not-italic text-FontColor">
+                    <h1 class="font-semibold text-3xl mb-4">Renad El-gallad</h1>
+                    <h3 class="font-medium text-xl">Frontend Developer</h3>
+                </div>
+            </div>
+            <!-- Dahy -->
+            <div class="mb-20 sm:mb-0">
+                <img class="w-full transition-transform duration-300 hover:scale-110" src="images/about-us/Dahy.svg"
+                    alt="Dahy">
+                <!-- cation Fron-End -->
+                <div class="text-center font-Monda not-italic text-FontColor">
+                    <h1 class="font-semibold text-3xl mb-4">Ahmed Dahy</h1>
+                    <h3 class="font-medium text-xl">Frontend Developer</h3>
+                </div>
+            </div>
+        </div>
+        <!-- UI/UX-Team -->
+        <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000"
+            data-aos-easing="ease-in-out" data-aos-once="false"
+            class="grid grid-cols-3 gap-32 items-center justify-between mx-auto mb-20 sm:grid-cols-1 sm:justify-center sm:gap-12 sm:mb-12">
+            <!-- Manar -->
+            <div>
+                <img class="w-full transition-transform duration-300 hover:scale-110" src="images/about-us/Manar.svg"
+                    alt="Manar">
+                <!-- cation Mobile-Designer -->
+                <div class="text-center font-Monda not-italic text-FontColor">
+                    <h1 class="font-semibold text-3xl mb-4">Manar Ahmed</h1>
+                    <h3 class="font-medium text-xl">Mobile Designer</h3>
+                </div>
+            </div>
+            <!-- Sarah -->
+            <div class="mb-24 sm:mb-0">
+                <img class="w-full transition-transform duration-300 hover:scale-110" src="images/about-us/Sarah.svg"
+                    alt="Sarah">
+                <!-- cation Web-Designer -->
+                <div class="text-center font-Monda not-italic text-FontColor">
+                    <h1 class="font-semibold text-3xl mb-4">Sarah Khalaf</h1>
+                    <h3 class="font-medium text-xl">Web Designer</h3>
+                </div>
+            </div>
+            <!-- Nada -->
+            <div>
+                <img class="w-full transition-transform duration-300 hover:scale-110" src="images/about-us/Nada.svg"
+                    alt="Nada">
+                <!-- cation Web-Designer -->
+                <div class="text-center font-Monda not-italic text-FontColor">
+                    <h1 class="font-semibold text-3xl mb-4">Nada Zahran</h1>
+                    <h3 class="font-medium text-xl">Web Designer</h3>
+                </div>
+            </div>
+        </div>
+        <!-- ML-Team -->
+        <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000"
+            data-aos-easing="ease-in-out" data-aos-once="false"
+            class="grid grid-cols-3 gap-20 items-center justify-around mx-auto sm:grid-cols-1 sm:justify-center sm:gap-12 sm:mb-12">
+            <!-- Maryam -->
+            <div>
+                <img class="w-full transition-transform duration-300 hover:scale-110" src="images/about-us/Maryam.svg"
+                    alt="Maryam">
+                <!-- cation machine learning developer -->
+                <div class="text-center font-Monda not-italic text-FontColor">
+                    <h1 class="font-semibold text-3xl mb-4">Maryam Lotfi</h1>
+                    <h3 class="font-medium text-xl">Machine Learning Developer</h3>
+                </div>
+            </div>
+            <!-- Sally -->
+            <div class="mb-24 sm:mb-0">
+                <img class="w-full transition-transform duration-300 hover:scale-110" src="images/about-us/Sally.svg"
+                    alt="Sally">
+                <!-- cation machine learning developer -->
+                <div class="text-center font-Monda not-italic text-FontColor">
+                    <h1 class="font-semibold text-3xl mb-4">Sally Sanour</h1>
+                    <h3 class="font-medium text-xl">Machine Learning Developer</h3>
+                </div>
+            </div>
+            <!-- Morsy -->
+            <div>
+                <img class="w-full transition-transform duration-300 hover:scale-110" src="images/about-us/Morsy.svg"
+                    alt="Morsy">
+                <!-- cation machine learning developer -->
+                <div class="text-center font-Monda not-italic text-FontColor">
+                    <h1 class="font-semibold text-3xl mb-4">Mohamed Elmorsi</h1>
+                    <h3 class="font-medium text-xl">Machine Learning Developer</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start Footer-Section -->
+    <footer class=" bg-bgColorFooter py-4">
+        <div
+            class=" container flex justify-between items-center max-w-full px-10 box-border sm:flex-col sm:justify-start sm:items-start sm:max-w-full sm:px-0 sm:ml-5">
+            <div class=" ml-14 sm:ml-0 sm:mb-5">
+                <img class=" ml-5 sm:m-0" src="images/Landing-page/footer-logo.png" alt="logo">
+                <div class=" flex items-center sm:justify-start">
+                    <img class=" mr-2" src="images/Landing-page/email 1.png" alt="email">
+                    <a class=" text-FontColor1 font-Monda font-normal text-base"
+                        href="mailto:info@minder.org?subject=Contact">info@minder.org</a>
+                </div>
+            </div>
+            <div
+                class="copy relative top-14 text-center text-FontColor1 font-Monda font-semibold text-xs sm:top-0 sm:text-left sm:mt-5 sm:order-last">
+                <p>Copyrights © 2022 All Rights Reserved by Minder</p>
+            </div>
+            <div class=" text-center text-FontColor1  mr-10 sm:text-left sm:mb-2 sm:order-2">
+                <h2 class=" font-Monda not-italic font-bold text-2xl mb-3 mt-3">Follow Us:</h2>
+                <div class=" text-xl">
+                    <a href=""><i class="fa-brands fa-facebook-f mr-5 ml-3 sm:ml-0"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter mr-5"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram mr-5"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin-in mr-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer-Section -->
+    <script src="JS/main.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        AOS.refresh();
+    </script>
+</body>
